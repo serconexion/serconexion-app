@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'colors/ships_officer.dart';
 import 'colors/georgia_peach.dart';
+
+import 'screens/tabs_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,25 +14,11 @@ class MyApp extends StatelessWidget {
       title: 'Serconexion',
       theme: ThemeData(
         primarySwatch: georgiaPeach,
+        accentColor: shipsOfficer,
+        fontFamily: 'Roboto',
+        textTheme: ThemeData.light().textTheme.copyWith(),
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('SerConexion'),
-      ),
-      body: Center(child: Text('Home')),
+      home: TabsScreen(),
     );
   }
 }
