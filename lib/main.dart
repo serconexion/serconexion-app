@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'colors/georgia_peach.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Serconexion',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: georgiaPeach,
       ),
       home: MyHomePage(),
     );
