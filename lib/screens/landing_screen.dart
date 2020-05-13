@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {
+  List<Map<String, String>> _services = [
+    {
+      'name': 'Limpieza',
+      'image':
+          'https://images.unsplash.com/photo-1562886877-f12251816e01?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80',
+    },
+    {
+      'name': 'Reparaciones',
+      'image':
+          'https://images.unsplash.com/photo-1505798577917-a65157d3320a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+    },
+    {
+      'name': 'Cuidado y paseo de mascotas',
+      'image':
+          'https://images.unsplash.com/photo-1494947665470-20322015e3a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -93,9 +111,39 @@ class LandingScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(34),
                     color: Theme.of(context).primaryColor,
                   ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(34),
+                    child: Stack(
+                      children: <Widget>[
+                        Image.network(
+                          _services[i]['image'],
+                          height: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                        Container(
+                          height: double.infinity,
+                          width: double.infinity,
+                          color: Colors.black45,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            _services[i]['name'].toUpperCase(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              itemCount: 3,
+              itemCount: _services.length,
             ),
           ),
         ],

@@ -38,29 +38,33 @@ class _TabsScreenState extends State<TabsScreen> {
         body: SafeArea(
           child: _pages[_selectedPageIndex]['page'],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: _selectPage,
-          currentIndex: _selectedPageIndex,
-          backgroundColor: Theme.of(context).primaryColor,
-          fixedColor: Theme.of(context).accentColor,
-          iconSize: 40,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          unselectedItemColor: Colors.white,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text(''),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.work),
-              title: Text(''),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text(''),
-            ),
-          ],
+        bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+          child: BottomNavigationBar(
+            onTap: _selectPage,
+            currentIndex: _selectedPageIndex,
+            backgroundColor: Theme.of(context).primaryColor,
+            fixedColor: Theme.of(context).accentColor,
+            iconSize: 40,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            unselectedItemColor: Colors.white,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text(''),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.work),
+                title: Text(''),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                title: Text(''),
+              ),
+            ],
+          ),
         ),
       ),
     );
