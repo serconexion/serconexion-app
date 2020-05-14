@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/settings_screen.dart';
 import '../screens/jobs_screen.dart';
 import '../screens/landing_screen.dart';
-
+import '../screens/profile_screen.dart';
 class TabsScreen extends StatefulWidget {
   @override
   _TabsScreenState createState() => _TabsScreenState();
@@ -20,7 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _pages = [
       {'page': LandingScreen()},
       {'page': JobsScreen()},
-      {'page': SettingsScreen()},
+      {'page': ProfileScreen()},
     ];
   }
 
