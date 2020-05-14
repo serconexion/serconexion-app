@@ -27,9 +27,11 @@ class LandingScreen extends StatelessWidget {
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   RichText(
                     text: TextSpan(
