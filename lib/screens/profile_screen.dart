@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+  ProfileScreen({Key key, this.title}) : super(key: key);
 
-   @override
-  Widget build(BuildContext context) {
-    return Container (
-      padding: EdgeInsets.only(left: 30 , right: 30, top: 10),
-      child: SingleChildScrollView(
-        child: Column(
+  final String title;
+
+  @override
+  _ProfileScreen createState() => _ProfileScreen();
+}
+
+class _ProfileScreen extends State<ProfileScreen> {
+  
+  Widget _backButton() {
+    return InkWell(
+      onTap: () {
+        // devolverse a pagina en la que estaba
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
           children: <Widget>[
-            Column(
+            Container(
+              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
+              child: const Icon(Icons.keyboard_arrow_left, size:35, color: Colors.black),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _photo() {
+    return Container(
+           child: Column( 
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -35,9 +57,14 @@ class ProfileScreen extends StatelessWidget {
                       ]),
                 ),
               ],
-            ),
+           )
            
-            Container(
+     ); 
+  }
+  Widget _places() {
+    return Container (
+      child: Container(
+              padding: EdgeInsets.only(left: 30 , right: 30, top: 10),
               width: double.infinity,
               margin: EdgeInsets.only(top: 16),
               child: Column(
@@ -71,8 +98,15 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            Container(
+            )
+
+    );
+  }
+
+  Widget _cards() {
+    return Container (
+      child: Container(
+              padding: EdgeInsets.only(left: 30 , right: 30, top: 10),
               width: double.infinity,
               margin: EdgeInsets.only(top: 5),
               child: Column(
@@ -106,9 +140,14 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            )
+    );
+  }
 
-            Container(
+  Widget _information() {
+    return Container (
+      child: Container(
+               padding: EdgeInsets.only(left: 30 , right: 30, top: 10),
               width: double.infinity,
               margin: EdgeInsets.only(top: 5),
               child: Column(
@@ -142,10 +181,31 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),   
-          ],
-        ),
-      ),
+            )
+
+    );
+  }
+
+   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              width: 70, // specific value
+              child:  _backButton()
+           )
+          ),
+          _photo(),
+          _places(),
+          _cards(),
+          _information()
+        ]
+      )
+      )
     );
   }
 }
