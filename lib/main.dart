@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:serconexion_app/screens/signup_screen.dart';
 import 'package:serconexion_app/screens/welcome_screen.dart';
-
+import 'package:serconexion_app/screens/splash_screen.dart';
 import 'colors/ships_officer.dart';
 import 'colors/georgia_peach.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         textTheme: ThemeData.light().textTheme.copyWith(),
       ),
       debugShowCheckedModeBanner: false,
-      home:   WelcomeScreen(),
+      home:   SplashScreen(),
     );
   }
 }
