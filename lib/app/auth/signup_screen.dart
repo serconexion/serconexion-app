@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/login_screen.dart';
+import 'package:serconexion_app/app/auth/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key key, this.title}) : super(key: key);
@@ -13,9 +13,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   Widget _name() {
     return InkWell(
-      onTap: () {
-        
-      },
+      onTap: () {},
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 13),
@@ -33,20 +31,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Text(
               'Nombre',
               style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
             ),
           ],
         ),
       ),
     );
   }
+
   Widget _password() {
     return InkWell(
-      onTap: () {
-        
-      },
+      onTap: () {},
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 13),
@@ -61,15 +58,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Text(
               'Contraseña',
               style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
             ),
-            
             SizedBox(
               width: 80,
             ),
-            const Icon(Icons.vpn_key, size: 18.0, color : Colors.white),
+            const Icon(Icons.vpn_key, size: 18.0, color: Colors.white),
           ],
         ),
       ),
@@ -101,39 +97,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
             );
       },
       */
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 13),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            
-            Text(
-              'Correo     ',
-              style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
-            ),
-            
-            SizedBox(
-              width: 95,
-            ),
-            const Icon(Icons.mail, size: 18.0, color : Colors.white),
-          ],
-        ),
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.symmetric(vertical: 13),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Theme.of(context).accentColor,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Correo     ',
+            style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+          ),
+          SizedBox(
+            width: 95,
+          ),
+          const Icon(Icons.mail, size: 18.0, color: Colors.white),
+        ],
+      ),
     );
   }
 
   Widget _password2() {
     return InkWell(
-      onTap: () {
-        
-      },
+      onTap: () {},
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 13),
@@ -151,9 +141,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Text(
               'Repetir Contraseña',
               style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
             ),
           ],
         ),
@@ -163,9 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _register() {
     return InkWell(
-      onTap: () {
-        
-      },
+      onTap: () {},
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 13),
@@ -180,21 +168,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Text(
               'Registrate',
               style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
             ),
-           
           ],
         ),
       ),
     );
   }
 
-Widget _accountLabel() {
+  Widget _accountLabel() {
     return InkWell(
       onTap: () {
-       Navigator.push(
+        Navigator.push(
             context, MaterialPageRoute(builder: (context) => LoginScreen()));
       },
       child: Container(
@@ -224,79 +211,73 @@ Widget _accountLabel() {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-            
-           
-      body:SingleChildScrollView(
-       
-        child:Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            height: MediaQuery.of(context).size.height,
-            decoration: new BoxDecoration(borderRadius: BorderRadius.circular(100),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: MediaQuery.of(context).size.height,
+          decoration: new BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
               color: Theme.of(context).primaryColor),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-               
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 15),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                      //crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                      Image.network('https://i.ibb.co/PWc0tBq/Logo-Ser-Conexion.jpg'),
-                      //Image.asset('../assets/Logo-Ser-Conexion.jpg'),
-                       SizedBox(
-                         height: 40,
-                       ),
-
-                       _name(),
-
-                       SizedBox(
-                         height: 20,
-                       ),
-
-                       _mail(),
-
-                       SizedBox(
-                         height: 20,
-                       ),
-
-                       _password(),
-                       SizedBox(
-                         height: 20,
-                       ),
-
-                       _password2(),
-                       SizedBox(
-                         height: 20,
-                       ),
-
-                       _register(),
-                       SizedBox(
-                         height: 40,
-                       ),
-
-                       _accountLabel()
-
-                       
-                      ],
+                ),
+                child: Column(
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.network(
+                        'https://i.ibb.co/PWc0tBq/Logo-Ser-Conexion.jpg'),
+                    //Image.asset('../assets/Logo-Ser-Conexion.jpg'),
+                    SizedBox(
+                      height: 40,
                     ),
-                )
-              ],
-            ),
+
+                    _name(),
+
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    _mail(),
+
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    _password(),
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    _password2(),
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    _register(),
+                    SizedBox(
+                      height: 40,
+                    ),
+
+                    _accountLabel()
+                  ],
+                ),
+              )
+            ],
           ),
+        ),
       ),
     );
   }

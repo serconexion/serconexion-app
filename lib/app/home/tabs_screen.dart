@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../screens/settings_screen.dart';
-import '../screens/jobs_screen.dart';
-import '../screens/landing_screen.dart';
-import '../screens/profile_screen.dart';
+import 'package:serconexion_app/app/home/jobs_screen.dart';
+import 'package:serconexion_app/app/home/landing_screen.dart';
+import 'package:serconexion_app/app/home/profile_screen.dart';
+
 class TabsScreen extends StatefulWidget {
+  static const String routeName = '/tabs';
+
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }

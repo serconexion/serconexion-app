@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
-import '../screens/welcome_screen.dart';
 import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+import 'package:serconexion_app/app/landing/welcome_screen.dart';
+
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key, this.title}) : super(key: key);
 
@@ -13,15 +16,20 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreen extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 5), () => Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen())));
-  }
 
+    Timer(
+      Duration(seconds: 5),
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomeScreen()),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -31,7 +39,6 @@ class _SplashScreen extends State<SplashScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              
               Expanded(
                 flex: 2,
                 child: Container(
@@ -39,9 +46,9 @@ class _SplashScreen extends State<SplashScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                       radius: 70,
-                       backgroundImage: AssetImage(
-                      'assets/Logo2-Ser-Conexion.jpg'),
+                        radius: 70,
+                        backgroundImage:
+                            AssetImage('assets/images/Logo2-Ser-Conexion.jpg'),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 10.0),
@@ -50,7 +57,6 @@ class _SplashScreen extends State<SplashScreen> {
                   ),
                 ),
               ),
-              
             ],
           )
         ],
