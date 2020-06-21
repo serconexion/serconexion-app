@@ -48,7 +48,7 @@ class _SplashScreen extends State<SplashScreen> {
                       CircleAvatar(
                         radius: 70,
                         backgroundImage:
-                            AssetImage('assets/images/Logo2-Ser-Conexion.jpg'),
+                            AssetImage('assets/images/branding/logo.png'),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 10.0),
