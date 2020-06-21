@@ -178,24 +178,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: <Widget>[
                     Image.network(
                         'https://i.ibb.co/PWc0tBq/Logo-Ser-Conexion.jpg'),
-                    //Image.asset('../assets/Logo-Ser-Conexion.jpg'),
-                    SizedBox(
-                      height: 60,
-                    ),
+                    SizedBox(height: 60),
                     _mail(),
-
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     _password(),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     _log(),
-                    SizedBox(
-                      height: 80,
-                    ),
-
+                    SizedBox(height: 80),
                     _createAccountLabel()
                   ],
                 ),
