@@ -239,38 +239,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: <Widget>[
                     Image.network(
                         'https://i.ibb.co/PWc0tBq/Logo-Ser-Conexion.jpg'),
-                    //Image.asset('../assets/Logo-Ser-Conexion.jpg'),
-                    SizedBox(
-                      height: 40,
-                    ),
-
+                    SizedBox(height: 40),
                     _name(),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-
+                    SizedBox(height: 20),
                     _mail(),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-
+                    SizedBox(height: 20),
                     _password(),
-                    SizedBox(
-                      height: 20,
-                    ),
-
+                    SizedBox(height: 20),
                     _password2(),
-                    SizedBox(
-                      height: 20,
-                    ),
-
+                    SizedBox(height: 20),
                     _register(),
-                    SizedBox(
-                      height: 40,
-                    ),
-
+                    SizedBox(height: 40),
                     _accountLabel()
                   ],
                 ),
