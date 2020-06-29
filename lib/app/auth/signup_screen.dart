@@ -144,7 +144,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     fontSize: 18,
                     fontWeight: FontWeight.w700),
                 ),
-
               );
   }
 

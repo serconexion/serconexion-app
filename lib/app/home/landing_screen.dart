@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {
-  List<Map<String, String>> _services = [
+  final List<Map<String, String>> _services = [
     {
       'name': 'Limpieza',
       'image':

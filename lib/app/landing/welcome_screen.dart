@@ -165,14 +165,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
-                        new Image.asset(
-                            'assets/images/isotipo_transpatente.jpg'),
+                        Image.asset('assets/images/branding/logo_black.png'),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        new Image.asset('assets/images/Imagen_welcome.jpg'),
+                        Image.asset('assets/images/landing/landing.png'),
                       ],
                     ),
                     RichText(
@@ -213,17 +212,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ),
                         ]),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
+                      SizedBox(height: 15),
                       buttonClient(),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10),
                       buttonOfferer(),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10),
                       _accountLabel()
                     ],
                   ),
