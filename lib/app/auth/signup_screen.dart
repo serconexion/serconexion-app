@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:serconexion_app/app/auth/login_screen.dart';
+import 'package:serconexion_app/app/auth/signup_screen_two.dart';
 
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key key, this.title}) : super(key: key);
@@ -11,149 +12,14 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  Widget _name() {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 13),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              width: 45,
-            ),
-            Text(
-              'Nombre',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _password() {
+  Widget _nextStep() {
     return InkWell(
-      onTap: () {},
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 13),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Contraseña',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            ),
-            SizedBox(
-              width: 80,
-            ),
-            const Icon(Icons.vpn_key, size: 18.0, color: Colors.white),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _mail() {
-    return Container(
-      /*
       onTap: () {
-        TextField(
-              cursorColor: Colors.white,
-              cursorWidth: 4,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Colors.white,
-              ),
-              decoration: InputDecoration(
-                hintText: '   Contraseña',
-                suffixIcon: Icon(Icons.vpn_key, size: 18.0, color : Colors.white),
-                
-                hintStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-                
-              ),
-            );
+        //ruta a paso 2/2
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SignUpScreenTwo()));
       },
-      */
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(vertical: 13),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Theme.of(context).accentColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'Correo     ',
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
-          ),
-          SizedBox(
-            width: 95,
-          ),
-          const Icon(Icons.mail, size: 18.0, color: Colors.white),
-        ],
-      ),
-    );
-  }
-
-  Widget _password2() {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 13),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              width: 45,
-            ),
-            Text(
-              'Repetir Contraseña',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _register() {
-    return InkWell(
-      onTap: () {},
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 13),
@@ -166,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Registrate',
+              'Siguiente paso',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -186,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(0),
         alignment: Alignment.bottomCenter,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -210,53 +76,258 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+  
+  Widget _backButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
+              child: Icon(Icons.arrow_back_ios, color: Colors.black),
+            ),
+            
+          ],
+        ),
+      ),
+    );
+  }
 
+  Widget _textFieldName() {
+    return TextField(
+              cursorColor: Theme.of(context).accentColor,
+              cursorWidth: 4,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Theme.of(context).accentColor,
+              ),
+                  decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color:  Theme.of(context).accentColor, width: 2.0),
+                  borderRadius: BorderRadius.circular(20),
+                  ),
+                  hintText: 'Nombre',
+                  
+                  hintStyle: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
+
+                )
+
+              );
+  }
+
+  Widget _textFieldEmail() {
+    return TextField(
+                  cursorColor: Theme.of(context).accentColor,
+              cursorWidth: 4,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Theme.of(context).accentColor,
+              ),
+                  decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+                  borderRadius: BorderRadius.circular(20),
+                  ),
+                  hintText: 'Correo',
+                  suffixIcon: Icon(Icons.mail , color: Theme.of(context).accentColor),
+                  hintStyle: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
+                ),
+              );
+  }
+
+  Widget _textFieldPassword() {
+    return TextField(
+              obscureText: true,
+              cursorColor: Theme.of(context).accentColor,
+              cursorWidth: 4,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Theme.of(context).accentColor,
+              ),
+                  decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color:  Theme.of(context).accentColor, width: 2.0),
+                  borderRadius: BorderRadius.circular(20),
+                  ),
+                  hintText: 'Contraseña',
+                  
+                  suffixIcon: Icon(Icons.vpn_key, color: Theme.of(context).accentColor),
+
+                  hintStyle: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
+
+                )
+
+              );
+  }
+
+  Widget _textFieldPassword2() {
+    return TextField(
+              obscureText: true,
+              cursorColor: Theme.of(context).accentColor,
+              cursorWidth: 4,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Theme.of(context).accentColor,
+              ),
+                  decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color:  Theme.of(context).accentColor, width: 2.0),
+                  borderRadius: BorderRadius.circular(20),
+                  ),
+                  hintText: 'Repetir contraseña',
+                  
+                  hintStyle: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
+
+                )
+
+              );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          height: MediaQuery.of(context).size.height,
-          decoration: new BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: Theme.of(context).primaryColor),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 15),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  //crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.network(
-                        'https://i.ibb.co/PWc0tBq/Logo-Ser-Conexion.jpg'),
-                    SizedBox(height: 40),
-                    _name(),
-                    SizedBox(height: 20),
-                    _mail(),
-                    SizedBox(height: 20),
-                    _password(),
-                    SizedBox(height: 20),
-                    _password2(),
-                    SizedBox(height: 20),
-                    _register(),
-                    SizedBox(height: 40),
-                    _accountLabel()
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(top: 20, left: 30, right: 20),
+                  height: MediaQuery.of(context).size.height * .20,
+                  child: Column(children: <Widget>[
+                    SizedBox(
+                        height: 15,
+                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        //Icon(Icons.arrow_back_ios),
+                        _backButton(),
+                        RichText(
+                        text: TextSpan(children: <TextSpan>[
+                        TextSpan(
+                          text: 'Registro',
+                          style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 28,
+                          ),
+                        ),
+                      ]),
+                    ),
+                      ],
+                    ),
+                   
+                    Container(
+                      padding: EdgeInsets.only(top: 0, left: 45, right: 20),
+                      child: Row(
+                        children: <Widget>[
+                        RichText(
+                        text: TextSpan(children: <TextSpan>[
+                        TextSpan(
+                          text: 'Cliente',
+                          style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ]),
+                    ),
+                        ]
+                      )
+                    ),
+
+                    Container(
+                      padding: EdgeInsets.only(top: 0, left: 45, right: 20),
+                      child: Row(
+                        children: <Widget>[
+                        RichText(
+                        text: TextSpan(children: <TextSpan>[
+                        TextSpan(
+                          text: 'Paso 1/2',
+                          style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ]),
+                    ),
+                        ]
+                      )
+                    ),
+
                   ],
+                  ),
                 ),
+                Container(
+                  padding: EdgeInsets.only(top: 20, left: 30, right: 20),
+                  height: MediaQuery.of(context).size.height * .55,
+                  child: Column(children: <Widget>[
+                    SizedBox(
+                        height: 15,
+                      ),
+                    _textFieldName(),
+                    SizedBox(
+                        height: 15,
+                      ),
+                    _textFieldEmail(),
+                    
+                    SizedBox(
+                        height: 15,
+                      ),
+                    _textFieldPassword(),
+
+                    SizedBox(
+                        height: 15,
+                      ),
+                    _textFieldPassword2(),
+                  ]
+                  ),
+                ),
+
+                Container(
+                padding: EdgeInsets.only(top: 20, left: 30, right: 180),
+                  height: MediaQuery.of(context).size.height * .15,
+                  child: Column(children: <Widget>[
+                    _nextStep(),
+                  ]
+                  )
+              ),
+
+              Container(
+                padding: EdgeInsets.only(top: 0, left: 30, right: 20),
+                  height: MediaQuery.of(context).size.height * .20,
+                  child: Column(children: <Widget>[
+                    _accountLabel()
+                  ]
+                  )
               )
-            ],
-          ),
-        ),
+              ]
+               )
+          ]
+        )
       ),
     );
   }
