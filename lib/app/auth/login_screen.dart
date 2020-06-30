@@ -12,7 +12,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
+  TextEditingController personCode = TextEditingController();
+  TextEditingController password = TextEditingController();
 
   Widget _backButton() {
     return InkWell(
@@ -35,6 +36,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _log() {
     return InkWell(
       onTap: () {
+        
+        String getuser = personCode.text;
+        String getpassword = password.text;
+        
+
+        // Validacion de username y password
+            
         // ruta a LandingScreen
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LandingScreen()));
@@ -99,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _textFieldLogin() {
     return TextField(
+              controller: personCode,
               cursorColor: Theme.of(context).accentColor,
               cursorWidth: 4,
               style: TextStyle(
@@ -127,6 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _textFieldPassword() {
     return TextField(
+                  controller: password,
                   obscureText: true,
                   cursorColor: Theme.of(context).accentColor,
               cursorWidth: 4,
@@ -221,7 +231,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ]
                   ),
                 ),
-
                 Container(
                 padding: EdgeInsets.only(top: 20, left: 30, right: 200),
                   height: MediaQuery.of(context).size.height * .15,

@@ -12,10 +12,20 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-
+  TextEditingController name = TextEditingController();
+  TextEditingController mail = TextEditingController();
+  TextEditingController pass = TextEditingController();
+  TextEditingController pass2 = TextEditingController();
   Widget _nextStep() {
     return InkWell(
       onTap: () {
+        String getname = name.text;
+        String getmail = mail.text;
+        String getpass = pass.text; 
+        String getpass2 = pass2.text;
+
+        // validacion de getpass y getpass2
+
         //ruta a paso 2/2
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => SignUpScreenTwo()));
@@ -99,6 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _textFieldName() {
     return TextField(
+              controller:  name,
               cursorColor: Theme.of(context).accentColor,
               cursorWidth: 4,
               style: TextStyle(
@@ -125,7 +136,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _textFieldEmail() {
     return TextField(
-                  cursorColor: Theme.of(context).accentColor,
+              controller:  mail,
+              cursorColor: Theme.of(context).accentColor,
               cursorWidth: 4,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -144,12 +156,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     fontSize: 18,
                     fontWeight: FontWeight.w700),
                 ),
-
               );
   }
 
   Widget _textFieldPassword() {
     return TextField(
+              controller:  pass,
               obscureText: true,
               cursorColor: Theme.of(context).accentColor,
               cursorWidth: 4,
@@ -179,6 +191,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _textFieldPassword2() {
     return TextField(
+              controller:  pass2,
               obscureText: true,
               cursorColor: Theme.of(context).accentColor,
               cursorWidth: 4,

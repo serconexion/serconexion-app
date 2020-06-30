@@ -13,6 +13,9 @@ class SignUpScreenTwo extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreenTwo> {
 
+  TextEditingController id_person = TextEditingController();
+  TextEditingController address = TextEditingController();
+
   Widget _register() {
     return InkWell(
       onTap: () {
@@ -47,6 +50,9 @@ class _SignUpScreenState extends State<SignUpScreenTwo> {
   Widget _accountLabel() {
     return InkWell(
       onTap: () {
+        String getId = id_person.text;
+        String getAddress = address.text;   
+        // ruta al loginScreen
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LoginScreen()));
       },
@@ -99,6 +105,7 @@ class _SignUpScreenState extends State<SignUpScreenTwo> {
 
   Widget _textFieldId() {
     return TextField(
+              controller: id_person,
               cursorColor: Theme.of(context).accentColor,
               cursorWidth: 4,
               style: TextStyle(
@@ -125,9 +132,10 @@ class _SignUpScreenState extends State<SignUpScreenTwo> {
 
   Widget _textFieldAddress() {
     return TextField(
-                  cursorColor: Theme.of(context).accentColor,
-              cursorWidth: 4,
-              style: TextStyle(
+                controller: address, 
+                cursorColor: Theme.of(context).accentColor,
+                cursorWidth: 4,
+                style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
                 color: Theme.of(context).accentColor,
