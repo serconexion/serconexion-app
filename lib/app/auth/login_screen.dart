@@ -3,17 +3,13 @@ import 'package:serconexion_app/app/home/landing_screen.dart';
 import 'package:serconexion_app/app/auth/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key, this.title}) : super(key: key);
-
-  final String title;
+  static const String routeName = '/login-client-screen';
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
-
   Widget _backButton() {
     return InkWell(
       onTap: () {
@@ -32,10 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
   Widget _log() {
     return InkWell(
       onTap: () {
-        // ruta a LandingScreen
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LandingScreen()));
       },
@@ -62,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
 
   Widget _createAccountLabel() {
     return InkWell(
@@ -99,59 +94,56 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _textFieldLogin() {
     return TextField(
-              cursorColor: Theme.of(context).accentColor,
-              cursorWidth: 4,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Theme.of(context).accentColor,
-              ),
-                  decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color:  Theme.of(context).accentColor, width: 2.0),
-                  borderRadius: BorderRadius.circular(20),
-                  ),
-                  hintText: 'Correo',
-                  
-                  suffixIcon: Icon(Icons.mail, color: Theme.of(context).accentColor),
-
-                  hintStyle: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-
-                )
-
-              );
+        cursorColor: Theme.of(context).accentColor,
+        cursorWidth: 4,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+          color: Theme.of(context).accentColor,
+        ),
+        decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          hintText: 'Correo',
+          suffixIcon: Icon(Icons.mail, color: Theme.of(context).accentColor),
+          hintStyle: TextStyle(
+              color: Theme.of(context).accentColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w700),
+        ));
   }
 
   Widget _textFieldPassword() {
     return TextField(
-                  obscureText: true,
-                  cursorColor: Theme.of(context).accentColor,
-              cursorWidth: 4,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Theme.of(context).accentColor,
-              ),
-                  decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Theme.of(context).accentColor, width: 2.0),
-                  borderRadius: BorderRadius.circular(20),
-                  ),
-                  hintText: 'Contraseña',
-                  suffixIcon: Icon(Icons.vpn_key , color: Theme.of(context).accentColor),
-                  hintStyle: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-                ),
-
-              );
+      obscureText: true,
+      cursorColor: Theme.of(context).accentColor,
+      cursorWidth: 4,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        color: Theme.of(context).accentColor,
+      ),
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderSide:
+              BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        hintText: 'Contraseña',
+        suffixIcon: Icon(Icons.vpn_key, color: Theme.of(context).accentColor),
+        hintStyle: TextStyle(
+            color: Theme.of(context).accentColor,
+            fontSize: 18,
+            fontWeight: FontWeight.w700),
+      ),
+    );
   }
+
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -164,8 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: MediaQuery.of(context).size.height * .20,
                   child: Column(children: <Widget>[
                     SizedBox(
-                        height: 10,
-                      ),
+                      height: 10,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
@@ -179,66 +171,48 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.only(top: 20, left: 30, right: 20),
                   height: MediaQuery.of(context).size.height * .37,
                   child: Column(children: <Widget>[
-                    
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      
                       children: <Widget>[
                         RichText(
-                      text: TextSpan(children: <TextSpan>[
-                        TextSpan(
-                          text: 'Login',
-                          style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 28,
-                          ),
+                          text: TextSpan(children: <TextSpan>[
+                            TextSpan(
+                              text: 'Login',
+                              style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 28,
+                              ),
+                            ),
+                          ]),
                         ),
-                      ]),
-                    ),
                       ],
                     ),
-
-                    SizedBox(
-                        height: 15,
-                      ),
+                    SizedBox(height: 15),
                     _textFieldLogin(),
-                    SizedBox(
-                        height: 15,
-                      ),
+                    SizedBox(height: 15),
                     _textFieldPassword(),
+                    SizedBox(height: 15),
                     SizedBox(
-                        height: 15,
-                      ),
-
-                       //buttonClient(),
-                    
-                    SizedBox(
-                        height: 10,
-                      ),
-
-                    
-                  ]
-                  ),
+                      height: 10,
+                    ),
+                  ]),
                 ),
                 Container(
-                padding: EdgeInsets.only(top: 20, left: 30, right: 200),
-                  height: MediaQuery.of(context).size.height * .15,
-                  child: Column(children: <Widget>[
-                    _log(),
-                  ]
-                  )
-              ),
-
-              Container(
-                padding: EdgeInsets.only(top: 20, left: 30, right: 20),
+                    padding: EdgeInsets.only(top: 20, left: 30, right: 200),
+                    height: MediaQuery.of(context).size.height * .15,
+                    child: Column(children: <Widget>[
+                      _log(),
+                    ])),
+                Container(
+                  padding: EdgeInsets.only(top: 20, left: 30, right: 20),
                   height: MediaQuery.of(context).size.height * .20,
-                  child: Column(children: <Widget>[
-                    _createAccountLabel()
-                  ]
-                  )
-              )
-
+                  child: Column(
+                    children: <Widget>[
+                      _createAccountLabel(),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],

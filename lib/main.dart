@@ -5,8 +5,9 @@ import 'package:serconexion_app/routes.dart';
 
 import 'package:serconexion_app/providers/auth_provider.dart';
 
-import 'colors/ships_officer.dart';
-import 'colors/georgia_peach.dart';
+import 'package:serconexion_app/app/home/landing_screen.dart';
+import 'package:serconexion_app/colors/ships_officer.dart';
+import 'package:serconexion_app/colors/georgia_peach.dart';
 
 import 'package:serconexion_app/app/landing/welcome_screen.dart';
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: Consumer<AuthProvider>(
-        builder: (ctx, authData, _) => MaterialApp(
+        builder: (BuildContext ctx, AuthProvider authState, Widget _) =>
+            MaterialApp(
           title: 'Serconexion',
           theme: ThemeData(
             primarySwatch: georgiaPeach,
@@ -30,8 +32,8 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Roboto',
             textTheme: ThemeData.light().textTheme.copyWith(),
           ),
-          debugShowCheckedModeBanner: false,
-          home: WelcomeScreen(),
+          home:
+              authState.getIsAuthenticated ? LandingScreen() : WelcomeScreen(),
           routes: Router.routes,
         ),
       ),
