@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:serconexion_app/app/home/widgets/profile_header.dart';
 
 class JobsScreen extends StatelessWidget {
   @override
@@ -8,37 +9,7 @@ class JobsScreen extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                RichText(
-                  text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Tus ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 28,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'Servicios',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 28,
-                          ),
-                        )
-                      ]),
-                ),
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                      'https://images.unsplash.com/photo-1496493012404-97903cd749a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'),
-                )
-              ],
-            ),
+            ProfileHeader(text: 'Tus ', boldText: 'Servicios'),
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(top: 16),

@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
           title: 'Serconexion',
           theme: ThemeData(
             primarySwatch: georgiaPeach,
+            primaryColorBrightness: Brightness.light,
             accentColor: shipsOfficer,
+            accentColorBrightness: Brightness.dark,
             fontFamily: 'Roboto',
             textTheme: ThemeData.light().textTheme.copyWith(),
           ),
