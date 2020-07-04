@@ -4,6 +4,7 @@ import 'package:serconexion_app/app/auth/signup_screen.dart';
 import 'package:serconexion_app/app/auth/signup_screen_two.dart';
 import 'package:serconexion_app/app/profile/profile_screen.dart';
 import 'package:serconexion_app/app/home/tabs_screen.dart';
+import 'package:serconexion_app/app/services/searching_service_screen.dart';
 import 'package:serconexion_app/app/services/services_detail_screen.dart';
 
 class Router {
@@ -13,6 +14,7 @@ class Router {
 
     // Services
     ServicesDetailScreen.routeName: (ctx) => ServicesDetailScreen(),
+    SearchingServiceScreen.routeName: (ctx) => SearchingServiceScreen(),
 
     // Profile Screens
     ProfileScreen.routeName: (ctx) => ProfileScreen(),

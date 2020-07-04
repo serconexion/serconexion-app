@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+
+import 'package:serconexion_app/app/services/searching_service_screen.dart';
 import 'package:serconexion_app/app/services/widgets/filter_item.dart';
 
 class ServicesDetailScreen extends StatefulWidget {
@@ -88,7 +90,10 @@ class _ServicesDetailScreenState extends State<ServicesDetailScreen> {
                               fontSize: 16,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(SearchingServiceScreen.routeName);
+                          },
                         ),
                       ),
                     ),
