@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:serconexion_app/app/home/widgets/profile_header.dart';
+import 'package:serconexion_app/app/services/services_detail_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -74,7 +75,6 @@ class _LandingScreenState extends State<LandingScreen> {
                     fontSize: 18,
                     fontWeight: FontWeight.w700),
                 border: InputBorder.none,
-                // focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 errorBorder: InputBorder.none,
                 disabledBorder: InputBorder.none,
@@ -94,7 +94,10 @@ class _LandingScreenState extends State<LandingScreen> {
               itemBuilder: (ctx, i) => GridTile(
                 child: InkWell(
                   onTap: () {
-                    Navigator.of(context).pushNamed('routeName');
+                    Navigator.of(context)
+                        .pushNamed(ServicesDetailScreen.routeName, arguments: {
+                      'serviceName': this._filteredList[i]['name'],
+                    });
                   },
                   child: Container(
                     decoration: BoxDecoration(

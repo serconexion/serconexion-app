@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serconexion_app/app/home/profile_screen.dart';
+import 'package:serconexion_app/app/profile/profile_screen.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String boldText;
