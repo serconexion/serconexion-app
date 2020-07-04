@@ -1,211 +1,106 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({Key key, this.title}) : super(key: key);
-
-  final String title;
+  static const String routeName = '/profile-screen';
 
   @override
   _ProfileScreen createState() => _ProfileScreen();
 }
 
 class _ProfileScreen extends State<ProfileScreen> {
-  
-  Widget _backButton() {
-    return InkWell(
-      onTap: () {
-        // devolverse a pagina en la que estaba
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
-              child: const Icon(Icons.keyboard_arrow_left, size:35, color: Colors.black),
-            ),
-          ],
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                child: Column(
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        'https://images.unsplash.com/photo-1496493012404-97903cd749a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+                      ),
+                      radius: 100,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 10,
+                      ),
+                      child: Text(
+                        'Juan Garcia Pinto',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: <Widget>[
+                    this._profileItem(Icons.place, 'Tus Lugares'),
+                    this._profileItem(
+                        Icons.credit_card, 'Tus Tarjetas de Credito'),
+                    this._profileItem(Icons.person_outline, 'Tus Datos'),
+                    this._profileItem(
+                      Icons.exit_to_app,
+                      'Cerrar Sesión',
+                      isLogout: true,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
-  Widget _photo() {
-    return Container(
-           child: Column( 
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 70,
-                  backgroundImage: NetworkImage(
-                      'https://images.unsplash.com/photo-1496493012404-97903cd749a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'),
-                ),
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Juan Garcia\nPinto',
-                          
-                          style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 28,
-                          ),
-                        )
-                      ]),
-                ),
-              ],
-           )
-           
-     ); 
-  }
-  Widget _places() {
-    return Container (
+
+  Widget _profileItem(IconData icon, String text, {bool isLogout = false}) {
+    return InkWell(
+      onTap: () {},
       child: Container(
-              padding: EdgeInsets.only(left: 30 , right: 30, top: 10),
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            const Icon(Icons.place, size: 18.0, color : Colors.white),
-                            Text(
-                              ' Tus Lugares',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: isLogout
+              ? Theme.of(context).primaryColor
+              : Theme.of(context).accentColor,
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        margin: EdgeInsets.only(top: 10),
+        child: Row(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(right: 20),
+              child: Icon(
+                icon,
+                color: Colors.white,
+                size: 30,
               ),
-            )
-
-    );
-  }
-
-  Widget _cards() {
-    return Container (
-      child: Container(
-              padding: EdgeInsets.only(left: 30 , right: 30, top: 10),
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            const Icon(Icons.credit_card, size: 18.0, color: Colors.white),
-                            Text(
-                              ' Tus Tarjetas',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+            ),
+            Text(
+              text,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
               ),
-            )
-    );
-  }
-
-  Widget _information() {
-    return Container (
-      child: Container(
-               padding: EdgeInsets.only(left: 30 , right: 30, top: 10),
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            const Icon(Icons.person, size: 18.0, color : Colors.white),
-                            Text(
-                              ' Tu Informacion',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )
-
-    );
-  }
-
-   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-      child: Column(
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: SizedBox(
-              width: 70, // specific value
-              child:  _backButton()
-           )
-          ),
-          _photo(),
-          _places(),
-          _cards(),
-          _information()
-        ]
-      )
-      )
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
