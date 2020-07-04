@@ -72,8 +72,7 @@ class _SignUpScreenState extends State<SignUpScreenTwo> {
   Widget _accountLabel() {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        Navigator.of(context).pushNamed(LoginScreen.routeName);
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),

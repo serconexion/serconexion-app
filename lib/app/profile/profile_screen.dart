@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:serconexion_app/app/landing/welcome_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const String routeName = '/profile-screen';
@@ -71,7 +72,11 @@ class _ProfileScreen extends State<ProfileScreen> {
 
   Widget _profileItem(IconData icon, String text, {bool isLogout = false}) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        if (isLogout) {
+          Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeName);
+        }
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

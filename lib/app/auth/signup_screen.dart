@@ -61,8 +61,7 @@ class SignUpScreen extends StatelessWidget {
   Widget _accountLabel(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        Navigator.of(context).pushNamed(LoginScreen.routeName);
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),
@@ -187,9 +186,10 @@ class _SignUpFormOneState extends State<SignUpFormOne> {
             ),
             hintText: 'Repetir contraseña',
             hintStyle: TextStyle(
-                color: Theme.of(context).accentColor,
-                fontSize: 18,
-                fontWeight: FontWeight.w700),
+              color: Theme.of(context).accentColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ],

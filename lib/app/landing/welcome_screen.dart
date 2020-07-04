@@ -14,8 +14,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget _accountLabel() {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        Navigator.of(context).pushNamed(LoginScreen.routeName);
       },
       child: Container(
         padding: EdgeInsets.all(15),

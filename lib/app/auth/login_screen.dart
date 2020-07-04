@@ -1,65 +1,96 @@
 import 'package:flutter/material.dart';
-import 'package:serconexion_app/app/home/landing_screen.dart';
-import 'package:serconexion_app/app/auth/signup_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+import 'package:serconexion_app/app/auth/signup_screen.dart';
+import 'package:serconexion_app/app/home/tabs_screen.dart';
+
+class LoginScreen extends StatelessWidget {
   static const String routeName = '/login-client-screen';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
+  Widget build(BuildContext context) {
+    final PreferredSizeWidget appBar = AppBar(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+    );
 
-class _LoginScreenState extends State<LoginScreen> {
-  Widget _backButton() {
-    return InkWell(
-      onTap: () {
-        Navigator.pop(context);
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
-              child: Icon(Icons.arrow_back_ios, color: Colors.black),
-            ),
-          ],
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: appBar,
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                child: Container(
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/images/auth/shape_login.png',
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+              SafeArea(
+                bottom: false,
+                child: Container(
+                  height: MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height -
+                      50,
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(horizontal: 25),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(bottom: 40),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 28,
+                          ),
+                        ),
+                      ),
+                      LoginForm(),
+                      this._loginButton(context),
+                      this._createAccountLabel(context),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _log() {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LandingScreen()));
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 13),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
+  Widget _loginButton(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 30),
+      alignment: Alignment.centerLeft,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: RaisedButton(
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
           color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Ingresa',
+          child: Text('Login',
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            ),
-          ],
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              )),
+          onPressed: () {
+            Navigator.of(context).pushNamed(TabsScreen.routeName);
+          },
         ),
       ),
     );
   }
 
-  Widget _createAccountLabel() {
+  Widget _createAccountLabel(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -67,10 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),
-        padding: EdgeInsets.all(15),
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.center,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               '¿No tienes cuenta?',
@@ -82,142 +112,76 @@ class _LoginScreenState extends State<LoginScreen> {
             Text(
               'Registrate',
               style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600),
+                color: Theme.of(context).primaryColor,
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _textFieldLogin() {
-    return TextField(
-        cursorColor: Theme.of(context).accentColor,
-        cursorWidth: 4,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18,
-          color: Theme.of(context).accentColor,
-        ),
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).accentColor, width: 2.0),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          hintText: 'Correo',
-          suffixIcon: Icon(Icons.mail, color: Theme.of(context).accentColor),
-          hintStyle: TextStyle(
-              color: Theme.of(context).accentColor,
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
-        ));
-  }
+class LoginForm extends StatefulWidget {
+  @override
+  _LoginFormState createState() => _LoginFormState();
+}
 
-  Widget _textFieldPassword() {
-    return TextField(
-      obscureText: true,
-      cursorColor: Theme.of(context).accentColor,
-      cursorWidth: 4,
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 18,
-        color: Theme.of(context).accentColor,
-      ),
-      decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: Theme.of(context).accentColor, width: 2.0),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        hintText: 'Contraseña',
-        suffixIcon: Icon(Icons.vpn_key, color: Theme.of(context).accentColor),
-        hintStyle: TextStyle(
-            color: Theme.of(context).accentColor,
-            fontSize: 18,
-            fontWeight: FontWeight.w700),
-      ),
-    );
-  }
-
+class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Stack(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 20, left: 30, right: 20),
-                  height: MediaQuery.of(context).size.height * .20,
-                  child: Column(children: <Widget>[
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        //Icon(Icons.arrow_back_ios),
-                        _backButton()
-                      ],
-                    ),
-                  ]),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 20, left: 30, right: 20),
-                  height: MediaQuery.of(context).size.height * .37,
-                  child: Column(children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        RichText(
-                          text: TextSpan(children: <TextSpan>[
-                            TextSpan(
-                              text: 'Login',
-                              style: TextStyle(
-                                color: Theme.of(context).accentColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 28,
-                              ),
-                            ),
-                          ]),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 15),
-                    _textFieldLogin(),
-                    SizedBox(height: 15),
-                    _textFieldPassword(),
-                    SizedBox(height: 15),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ]),
-                ),
-                Container(
-                    padding: EdgeInsets.only(top: 20, left: 30, right: 200),
-                    height: MediaQuery.of(context).size.height * .15,
-                    child: Column(children: <Widget>[
-                      _log(),
-                    ])),
-                Container(
-                  padding: EdgeInsets.only(top: 20, left: 30, right: 20),
-                  height: MediaQuery.of(context).size.height * .20,
-                  child: Column(
-                    children: <Widget>[
-                      _createAccountLabel(),
-                    ],
-                  ),
-                ),
-              ],
+    return Column(
+      children: <Widget>[
+        TextField(
+          cursorColor: Theme.of(context).accentColor,
+          cursorWidth: 4,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Theme.of(context).accentColor,
+          ),
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+              borderRadius: BorderRadius.circular(10),
             ),
-          ],
+            hintText: 'Correo',
+            suffixIcon: Icon(Icons.mail, color: Theme.of(context).accentColor),
+            hintStyle: TextStyle(
+                color: Theme.of(context).accentColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w700),
+          ),
         ),
-      ),
+        SizedBox(height: 20),
+        TextField(
+          obscureText: true,
+          cursorColor: Theme.of(context).accentColor,
+          cursorWidth: 4,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Theme.of(context).accentColor,
+          ),
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            hintText: 'Contraseña',
+            suffixIcon:
+                Icon(Icons.vpn_key, color: Theme.of(context).accentColor),
+            hintStyle: TextStyle(
+                color: Theme.of(context).accentColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w700),
+          ),
+        ),
+      ],
     );
   }
 }
