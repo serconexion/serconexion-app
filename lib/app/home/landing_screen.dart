@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-class LandingScreen extends StatelessWidget {
+import 'package:serconexion_app/app/home/widgets/profile_header.dart';
+
+class LandingScreen extends StatefulWidget {
+  @override
+  _LandingScreenState createState() => _LandingScreenState();
+}
+
+class _LandingScreenState extends State<LandingScreen> {
+  final TextEditingController _textSearchController = TextEditingController();
   final List<Map<String, String>> _services = [
     {
       'name': 'Limpieza',
@@ -19,52 +27,25 @@ class LandingScreen extends StatelessWidget {
     },
   ];
 
+  List<Map<String, String>> _filteredList;
+
+  @override
+  void initState() {
+    super.initState();
+
+    this._filteredList = this._services;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       child: Column(
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  RichText(
-                    text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'Hola, ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 28,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Juan!',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              fontSize: 28,
-                            ),
-                          )
-                        ]),
-                  ),
-                  Text(
-                    '¿En que te podemos ayudar?',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-              CircleAvatar(
-                radius: 20,
-                backgroundImage: NetworkImage(
-                    'https://images.unsplash.com/photo-1496493012404-97903cd749a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'),
-              )
-            ],
+          ProfileHeader(
+            text: 'Hola, ',
+            boldText: 'Juan!',
+            subTitle: '¿En que te podemos ayudar?',
           ),
           Container(
             padding: EdgeInsets.symmetric(
@@ -73,10 +54,12 @@ class LandingScreen extends StatelessWidget {
             ),
             margin: EdgeInsets.only(top: 25, bottom: 35),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
+              borderRadius: BorderRadius.circular(14),
               color: Theme.of(context).primaryColor,
             ),
             child: TextField(
+              controller: this._textSearchController,
+              onChanged: this._filterServices,
               cursorColor: Colors.white,
               cursorWidth: 4,
               style: TextStyle(
@@ -107,49 +90,67 @@ class LandingScreen extends StatelessWidget {
                 mainAxisSpacing: 30,
                 crossAxisSpacing: 30,
               ),
+              itemCount: this._filteredList.length,
               itemBuilder: (ctx, i) => GridTile(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(34),
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(34),
-                    child: Stack(
-                      children: <Widget>[
-                        Image.network(
-                          _services[i]['image'],
-                          height: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          height: double.infinity,
-                          width: double.infinity,
-                          color: Colors.black45,
-                        ),
-                        Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(
-                            _services[i]['name'].toUpperCase(),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w900,
-                            ),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('routeName');
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(34),
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(34),
+                      child: Stack(
+                        children: <Widget>[
+                          Image.network(
+                            this._filteredList[i]['image'],
+                            height: double.infinity,
+                            fit: BoxFit.cover,
                           ),
-                        )
-                      ],
+                          Container(
+                            height: double.infinity,
+                            width: double.infinity,
+                            color: Colors.black45,
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            child: Text(
+                              this._filteredList[i]['name'].toUpperCase(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-              itemCount: _services.length,
             ),
           ),
         ],
       ),
     );
+  }
+
+  void _filterServices(String value) {
+    setState(() {
+      this._filteredList = this
+          ._services
+          .where(
+            (service) => service['name'].toLowerCase().contains(
+                  value.toLowerCase(),
+                ),
+          )
+          .toList();
+    });
   }
 }
