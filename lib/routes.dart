@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:serconexion_app/app/auth/login_screen.dart';
 import 'package:serconexion_app/app/auth/signup_screen.dart';
 import 'package:serconexion_app/app/auth/signup_screen_two.dart';
+import 'package:serconexion_app/app/jobs/job_detail.dart';
+import 'package:serconexion_app/app/jobs/job_preview.dart';
 import 'package:serconexion_app/app/landing/welcome_screen.dart';
 import 'package:serconexion_app/app/profile/profile_screen.dart';
 import 'package:serconexion_app/app/home/tabs_screen.dart';
@@ -19,6 +21,10 @@ class Router {
     // Services
     ServicesDetailScreen.routeName: (ctx) => ServicesDetailScreen(),
     SearchingServiceScreen.routeName: (ctx) => SearchingServiceScreen(),
+
+    // Jobs
+    JobPreview.routeName: (ctx) => JobPreview(),
+    JobDetail.routeName: (ctx) => JobDetail(),
 
     // Profile Screens
     ProfileScreen.routeName: (ctx) => ProfileScreen(),

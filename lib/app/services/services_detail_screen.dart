@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:serconexion_app/app/jobs/job_preview.dart';
 
 import 'package:serconexion_app/app/services/searching_service_screen.dart';
 import 'package:serconexion_app/app/services/widgets/filter_item.dart';
@@ -90,9 +91,15 @@ class _ServicesDetailScreenState extends State<ServicesDetailScreen> {
                               fontSize: 16,
                             ),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             Navigator.of(context)
                                 .pushNamed(SearchingServiceScreen.routeName);
+
+                            await Future.delayed(Duration(seconds: 5));
+
+                            Navigator.of(context).pop();
+                            Navigator.of(context)
+                                .pushNamed(JobPreview.routeName);
                           },
                         ),
                       ),
