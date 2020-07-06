@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:serconexion_app/app/home/widgets/profile_header.dart';
+import 'package:serconexion_app/app/jobs/job_detail.dart';
 
 class JobsScreen extends StatelessWidget {
   @override
@@ -25,66 +26,71 @@ class JobsScreen extends StatelessWidget {
                     ),
                     textAlign: TextAlign.left,
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 15),
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              'Limpieza',
-                              style: TextStyle(
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(JobDetail.routeName);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 15),
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).accentColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                'Limpieza',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              Text(
+                                '\$80.000',
+                                style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              '\$80.000',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontStyle: FontStyle.italic,
+                                  fontStyle: FontStyle.italic,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Casa Salitre - 19 de Mayo 14:00',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              'Alejandro Perez',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                            ],
+                          ),
+                          Text(
+                            'Casa Salitre - 19 de Mayo 14:00',
+                            style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
+                                fontWeight: FontWeight.w300),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                'Alejandro Perez',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Cancelar',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Theme.of(context).primaryColor,
-                                fontStyle: FontStyle.italic,
-                                fontSize: 16,
+                              Text(
+                                'Cancelar',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context).primaryColor,
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 16,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

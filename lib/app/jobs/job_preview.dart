@@ -129,7 +129,7 @@ class JobPreview extends StatelessWidget {
                   ),
                   Text(
                     'Edad:',
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                   ),
                   Text('25 años'),
                   SizedBox(
@@ -137,7 +137,7 @@ class JobPreview extends StatelessWidget {
                   ),
                   Text(
                     'Sexo:',
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                   ),
                   Text('Femenino'),
                 ],
