@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:serconexion_app/app/home/tabs_screen.dart';
 
 class JobDetail extends StatelessWidget {
@@ -79,7 +78,7 @@ class JobDetail extends StatelessWidget {
                 child: Text(
                   'PRECIO: \$80.000',
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w700,
                     color: Colors.white,
                   ),
                 ),

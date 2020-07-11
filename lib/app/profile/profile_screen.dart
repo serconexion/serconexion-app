@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:serconexion_app/app/landing/welcome_screen.dart';
+import 'package:serconexion_app/app/profile/profile_places_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const String routeName = '/profile-screen';
@@ -51,13 +52,22 @@ class _ProfileScreen extends State<ProfileScreen> {
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: <Widget>[
-                    this._profileItem(Icons.place, 'Tus Lugares'),
                     this._profileItem(
-                        Icons.credit_card, 'Tus Tarjetas de Credito'),
-                    this._profileItem(Icons.person_outline, 'Tus Datos'),
+                      icon: Icons.place,
+                      text: 'Tus Lugares',
+                      routeName: ProfilePlacesScreen.routeName,
+                    ),
                     this._profileItem(
-                      Icons.exit_to_app,
-                      'Cerrar Sesión',
+                        icon: Icons.credit_card,
+                        text: 'Tus Tarjetas de Credito',
+                        routeName: ''),
+                    this._profileItem(
+                        icon: Icons.person_outline,
+                        text: 'Tus Datos',
+                        routeName: ''),
+                    this._profileItem(
+                      icon: Icons.exit_to_app,
+                      text: 'Cerrar Sesión',
                       isLogout: true,
                     ),
                   ],
@@ -70,11 +80,17 @@ class _ProfileScreen extends State<ProfileScreen> {
     );
   }
 
-  Widget _profileItem(IconData icon, String text, {bool isLogout = false}) {
+  Widget _profileItem(
+      {@required IconData icon,
+      @required String text,
+      String routeName,
+      bool isLogout = false}) {
     return InkWell(
       onTap: () {
         if (isLogout) {
           Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeName);
+        } else {
+          Navigator.of(context).pushNamed(routeName);
         }
       },
       child: Container(

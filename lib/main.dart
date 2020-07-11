@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:serconexion_app/routes.dart';
-
-import 'package:serconexion_app/providers/auth_provider.dart';
-
 import 'package:serconexion_app/app/home/landing_screen.dart';
-import 'package:serconexion_app/colors/ships_officer.dart';
-import 'package:serconexion_app/colors/georgia_peach.dart';
-
 import 'package:serconexion_app/app/landing/welcome_screen.dart';
+import 'package:serconexion_app/colors/georgia_peach.dart';
+import 'package:serconexion_app/colors/ships_officer.dart';
+import 'package:serconexion_app/providers/auth_provider.dart';
+import 'package:serconexion_app/routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,8 +19,8 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: Consumer<AuthProvider>(
-        builder: (BuildContext ctx, AuthProvider authState, Widget _) =>
-            MaterialApp(
+          builder: (BuildContext ctx, AuthProvider authState, Widget _) {
+        return MaterialApp(
           title: 'Serconexion',
           theme: ThemeData(
             primarySwatch: georgiaPeach,
@@ -37,8 +33,8 @@ class MyApp extends StatelessWidget {
           home:
               authState.getIsAuthenticated ? LandingScreen() : WelcomeScreen(),
           routes: Router.routes,
-        ),
-      ),
+        );
+      }),
     );
   }
 }
