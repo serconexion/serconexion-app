@@ -13,6 +13,11 @@ class FilterItem extends StatefulWidget {
 class _FilterItemState extends State<FilterItem> {
   final List<String> titles = ['Edad', 'Sexo', 'Calificacion'];
 
+  final List<TextEditingController> _textControllers = [
+    TextEditingController(),
+    TextEditingController()
+  ];
+
   String sex = 'Masculino';
   bool isExpanded = false;
 
@@ -50,6 +55,8 @@ class _FilterItemState extends State<FilterItem> {
                   onPressed: () {
                     setState(() {
                       this.isExpanded = !this.isExpanded;
+
+                      FocusScope.of(context).unfocus();
                     });
                   },
                   icon: Icon(
@@ -82,7 +89,9 @@ class _FilterItemState extends State<FilterItem> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
-                                color: Colors.white,
+                                color: this.isExpanded
+                                    ? Colors.white
+                                    : Theme.of(context).accentColor,
                               ),
                               decoration: InputDecoration(
                                 hintText: ('Mínima'),
@@ -104,9 +113,7 @@ class _FilterItemState extends State<FilterItem> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
+                          SizedBox(width: 10),
                           Expanded(
                             child: TextField(
                               cursorColor: Colors.white,
@@ -114,7 +121,9 @@ class _FilterItemState extends State<FilterItem> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
-                                color: Colors.white,
+                                color: this.isExpanded
+                                    ? Colors.white
+                                    : Theme.of(context).accentColor,
                               ),
                               decoration: InputDecoration(
                                 hintText: ('Máxima'),

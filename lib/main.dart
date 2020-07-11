@@ -19,22 +19,27 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: Consumer<AuthProvider>(
-          builder: (BuildContext ctx, AuthProvider authState, Widget _) {
-        return MaterialApp(
-          title: 'Serconexion',
-          theme: ThemeData(
-            primarySwatch: georgiaPeach,
-            primaryColorBrightness: Brightness.light,
-            accentColor: shipsOfficer,
-            accentColorBrightness: Brightness.dark,
-            fontFamily: 'Roboto',
-            textTheme: ThemeData.light().textTheme.copyWith(),
-          ),
-          home:
-              authState.getIsAuthenticated ? LandingScreen() : WelcomeScreen(),
-          routes: Router.routes,
-        );
-      }),
+        builder: (BuildContext ctx, AuthProvider authState, Widget _) {
+          return MaterialApp(
+            title: 'Serconexion',
+            theme: ThemeData(
+              primarySwatch: georgiaPeach,
+              primaryColorBrightness: Brightness.light,
+              accentColor: shipsOfficer,
+              accentColorBrightness: Brightness.dark,
+              fontFamily: 'Roboto',
+              textTheme: ThemeData
+                  .light()
+                  .textTheme
+                  .copyWith(),
+            ),
+            home: authState.getIsAuthenticated
+                ? LandingScreen()
+                : WelcomeScreen(),
+            routes: Router.routes,
+          );
+        },
+      ),
     );
   }
 }
