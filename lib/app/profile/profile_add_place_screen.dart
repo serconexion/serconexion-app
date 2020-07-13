@@ -21,18 +21,20 @@ class ProfileAddPlaceScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-            child: AddPlaceForm(),
-          ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: this.loginButton(context),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              child: AddPlaceForm(),
+            ),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: this.loginButton(context),
+            ),
+          ],
+        ),
       ),
     );
   }
