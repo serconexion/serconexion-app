@@ -1,105 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:serconexion_app/app/home/widgets/profile_header.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool notifications = false;
+
   @override
   Widget build(BuildContext context) {
-    Widget _changepassword() {
-      return InkWell(
-        onTap: () {
-          /*Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ChangePasswordScreen()));*/
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(vertical: 20),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Theme.of(context).accentColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                'Cambiar Contraseña',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-              ),
-              const Icon(Icons.arrow_forward_ios,
-                  size: 18.0, color: Colors.white),
-            ],
-          ),
-        ),
-      );
-    }
-
-    Widget _changeaddress() {
-      return InkWell(
-        onTap: () {
-          /*Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ChangeAddressScreen()));*/
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(vertical: 20),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Theme.of(context).accentColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                'Cambiar Dirección',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-              ),
-              const Icon(Icons.arrow_forward_ios,
-                  size: 18.0, color: Colors.white),
-            ],
-          ),
-        ),
-      );
-    }
-
-    Widget _deleteaccount() {
-      return InkWell(
-        onTap: () {
-          /*Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DeleteAccountScreen()));*/
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(vertical: 20),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Theme.of(context).accentColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                'Eliminar cuenta',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-              ),
-              const Icon(Icons.arrow_forward_ios,
-                  size: 18.0, color: Colors.white),
-            ],
-          ),
-        ),
-      );
-    }
-
     return Container(
       padding: EdgeInsets.only(left: 30, right: 30, top: 10),
       child: SingleChildScrollView(
@@ -122,12 +33,23 @@ class SettingsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 45),
-                  _changepassword(),
-                  SizedBox(height: 45),
-                  _changeaddress(),
-                  SizedBox(height: 45),
-                  _deleteaccount()
+                  Row(
+                    children: <Widget>[
+                      Switch.adaptive(
+                        value: this.notifications,
+                        activeColor: Theme.of(context).primaryColor,
+                        onChanged: (value) {
+                          setState(() {
+                            this.notifications = value;
+                          });
+                        },
+                      ),
+                      Text(
+                        'Recibir notificaciones',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

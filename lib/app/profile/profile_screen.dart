@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:serconexion_app/app/landing/welcome_screen.dart';
 import 'package:serconexion_app/app/profile/profile_data_screen.dart';
-import 'package:serconexion_app/app/profile/profile_places_screen.dart';
+import 'package:serconexion_app/app/profile/profile_dynamic_list_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const String routeName = '/profile-screen';
@@ -11,6 +11,15 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreen extends State<ProfileScreen> {
+  final places = [
+    {'header': 'Casa Salitre', 'subtitle': 'Kr 68 #32-21'},
+    {'header': 'Oficina Chapinero', 'subtitle': 'Kr 7 #14-30'}
+  ];
+  final creditCards = [
+    {'header': 'Master Card', 'subtitle': '5345-234534-343'},
+    {'header': 'Visa', 'subtitle': '2003-123423-423'}
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,16 +65,28 @@ class _ProfileScreen extends State<ProfileScreen> {
                     this._profileItem(
                       icon: Icons.place,
                       text: 'Tus Lugares',
-                      routeName: ProfilePlacesScreen.routeName,
+                      routeName: ProfileDynamicListScreen.routeName,
+                      routeArguments: {
+                        'type': 'Lugar',
+                        'title': 'Tus Lugares',
+                        'data': this.places,
+                      },
                     ),
                     this._profileItem(
-                        icon: Icons.credit_card,
-                        text: 'Tus Tarjetas de Credito',
-                        routeName: ''),
+                      icon: Icons.credit_card,
+                      text: 'Tus Tarjetas de Credito',
+                      routeName: ProfileDynamicListScreen.routeName,
+                      routeArguments: {
+                        'type': 'Tarjeta de Credito',
+                        'title': 'Tus Tarjetas de Credito',
+                        'data': this.creditCards,
+                      },
+                    ),
                     this._profileItem(
-                        icon: Icons.person_outline,
-                        text: 'Tus Datos',
-                        routeName: ProfileDataScreen.routeName),
+                      icon: Icons.person_outline,
+                      text: 'Tus Datos',
+                      routeName: ProfileDataScreen.routeName,
+                    ),
                     this._profileItem(
                       icon: Icons.exit_to_app,
                       text: 'Cerrar Sesión',
@@ -81,17 +102,19 @@ class _ProfileScreen extends State<ProfileScreen> {
     );
   }
 
-  Widget _profileItem(
-      {@required IconData icon,
-      @required String text,
-      String routeName,
-      bool isLogout = false}) {
+  Widget _profileItem({
+    @required IconData icon,
+    @required String text,
+    String routeName,
+    Map routeArguments,
+    bool isLogout = false,
+  }) {
     return InkWell(
       onTap: () {
         if (isLogout) {
           Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeName);
         } else {
-          Navigator.of(context).pushNamed(routeName);
+          Navigator.of(context).pushNamed(routeName, arguments: routeArguments);
         }
       },
       child: Container(

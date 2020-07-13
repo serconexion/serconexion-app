@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:serconexion_app/app/profile/profile_add_place_screen.dart';
+import 'package:serconexion_app/app/profile/profile_dynamic_add_screen.dart';
 
-class ProfilePlacesScreen extends StatefulWidget {
-  static const String routeName = '/profile-places-screen';
+class ProfileDynamicListScreen extends StatefulWidget {
+  static const String routeName = '/profile-dynamic-list-screen';
 
   @override
-  _ProfilePlacesScreenState createState() => _ProfilePlacesScreenState();
+  _ProfileDynamicListScreenState createState() =>
+      _ProfileDynamicListScreenState();
 }
 
-class _ProfilePlacesScreenState extends State<ProfilePlacesScreen> {
-  final places = [
-    {'name': 'Casa Salitre', 'address': 'Kr 68 #32-21'},
-    {'name': 'Oficina Chapinero', 'address': 'Kr 7 #14-30'}
-  ];
-
+class _ProfileDynamicListScreenState extends State<ProfileDynamicListScreen> {
   @override
   Widget build(BuildContext context) {
+    final arguments = ModalRoute.of(context).settings.arguments as Map;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: FittedBox(
           child: Text(
-            'Tus Lugares',
+            arguments['title'],
             textAlign: TextAlign.left,
             style: TextStyle(
               fontSize: 28,
@@ -36,21 +34,22 @@ class _ProfilePlacesScreenState extends State<ProfilePlacesScreen> {
         child: Column(
           children: [
             SizedBox(height: 20),
-            ...this.placesList(context),
+            ...this.placesList(context, arguments['data']),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               width: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(ProfileAddPlaceScreen.routeName);
+                    Navigator.of(context).pushNamed(
+                        ProfileDynamicAddScreen.routeName,
+                        arguments: arguments);
                   },
                   padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   color: Theme.of(context).primaryColor,
                   child: Text(
-                    'Añadir un lugar',
+                    'Añadir un ${arguments['type']}',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -66,14 +65,14 @@ class _ProfilePlacesScreenState extends State<ProfilePlacesScreen> {
     );
   }
 
-  List<Widget> placesList(BuildContext context) {
-    return this.places.map((place) {
+  List<Widget> placesList(BuildContext context, List<Map> data) {
+    return data.map((item) {
       return Dismissible(
-        key: Key(place['address']),
+        key: Key(item['subtitle']),
         onDismissed: (direction) {
           setState(() {
-            this.places.removeWhere(
-                (element) => element['address'] == place['address']);
+            data.removeWhere(
+                (element) => element['subtitle'] == item['subtitle']);
           });
         },
         direction: DismissDirection.endToStart,
@@ -87,24 +86,25 @@ class _ProfilePlacesScreenState extends State<ProfilePlacesScreen> {
         child: Container(
           width: double.infinity,
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Theme.of(context).accentColor,
+            border: Border.all(color: Theme.of(context).accentColor, width: 1),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                place['name'],
+                item['header'],
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).accentColor,
                     fontWeight: FontWeight.w900,
                     fontSize: 18),
               ),
               Text(
-                place['address'],
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                item['subtitle'],
+                style: TextStyle(
+                    color: Theme.of(context).accentColor, fontSize: 16),
               ),
             ],
           ),

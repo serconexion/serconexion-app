@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ProfileAddPlaceScreen extends StatelessWidget {
+class ProfileDynamicAddScreen extends StatelessWidget {
   static const String routeName = '/profile-add-place-screen';
 
   @override
   Widget build(BuildContext context) {
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -12,7 +14,7 @@ class ProfileAddPlaceScreen extends StatelessWidget {
         centerTitle: false,
         title: FittedBox(
           child: Text(
-            'Añadir un lugar',
+            'Añadir un ${arguments['type']}',
             textAlign: TextAlign.left,
             style: TextStyle(
               fontSize: 28,
@@ -26,7 +28,7 @@ class ProfileAddPlaceScreen extends StatelessWidget {
           children: <Widget>[
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-              child: AddPlaceForm(),
+              child: AddDynamicForm(arguments['type']),
             ),
             Container(
               width: double.infinity,
@@ -59,12 +61,16 @@ class ProfileAddPlaceScreen extends StatelessWidget {
   }
 }
 
-class AddPlaceForm extends StatefulWidget {
+class AddDynamicForm extends StatefulWidget {
+  final String type;
+
+  AddDynamicForm(this.type);
+
   @override
-  _AddPlaceFormState createState() => _AddPlaceFormState();
+  _AddDynamicFormState createState() => _AddDynamicFormState();
 }
 
-class _AddPlaceFormState extends State<AddPlaceForm> {
+class _AddDynamicFormState extends State<AddDynamicForm> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -83,9 +89,12 @@ class _AddPlaceFormState extends State<AddPlaceForm> {
                   BorderSide(color: Theme.of(context).accentColor, width: 2.0),
               borderRadius: BorderRadius.circular(10),
             ),
-            hintText: 'Nombre',
-            suffixIcon:
-                Icon(Icons.location_city, color: Theme.of(context).accentColor),
+            hintText: widget.type == 'Lugar' ? 'Nombre' : 'Pasarela',
+            suffixIcon: Icon(
+                widget.type == 'Lugar'
+                    ? Icons.location_city
+                    : Icons.credit_card,
+                color: Theme.of(context).accentColor),
             hintStyle: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: 18,
@@ -107,8 +116,10 @@ class _AddPlaceFormState extends State<AddPlaceForm> {
                   BorderSide(color: Theme.of(context).accentColor, width: 2.0),
               borderRadius: BorderRadius.circular(10),
             ),
-            hintText: 'Dirección',
-            suffixIcon: Icon(Icons.place, color: Theme.of(context).accentColor),
+            hintText: widget.type == 'Lugar' ? 'Dirección' : 'Numero',
+            suffixIcon: Icon(
+                widget.type == 'Lugar' ? Icons.place : Icons.blur_on,
+                color: Theme.of(context).accentColor),
             hintStyle: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: 18,
