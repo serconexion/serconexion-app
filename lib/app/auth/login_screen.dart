@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:serconexion_app/app/auth/signup_screen.dart';
 import 'package:serconexion_app/app/home/tabs_screen.dart';
 
@@ -83,7 +82,8 @@ class LoginScreen extends StatelessWidget {
                 fontSize: 16,
               )),
           onPressed: () {
-            Navigator.of(context).pushNamed(TabsScreen.routeName);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                TabsScreen.routeName, (route) => false);
           },
         ),
       ),

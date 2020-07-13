@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:serconexion_app/app/auth/login_screen.dart';
 import 'package:serconexion_app/app/auth/widgets/signup_header.dart';
 import 'package:serconexion_app/app/home/tabs_screen.dart';
@@ -52,7 +51,8 @@ class _SignUpScreenState extends State<SignUpScreenTwo> {
                               fontWeight: FontWeight.bold,
                               fontSize: 16)),
                       onPressed: () {
-                        Navigator.of(context).pushNamed(TabsScreen.routeName);
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            TabsScreen.routeName, (route) => false);
                       },
                     ),
                   ),
