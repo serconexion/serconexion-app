@@ -7,6 +7,7 @@ import 'package:serconexion_app/app/jobs/job_detail.dart';
 import 'package:serconexion_app/app/jobs/job_preview.dart';
 import 'package:serconexion_app/app/landing/welcome_screen.dart';
 import 'package:serconexion_app/app/profile/profile_add_place_screen.dart';
+import 'package:serconexion_app/app/profile/profile_data_screen.dart';
 import 'package:serconexion_app/app/profile/profile_places_screen.dart';
 import 'package:serconexion_app/app/profile/profile_screen.dart';
 import 'package:serconexion_app/app/services/searching_service_screen.dart';
@@ -32,6 +33,7 @@ class Router {
     ProfileScreen.routeName: (ctx) => ProfileScreen(),
     ProfilePlacesScreen.routeName: (ctx) => ProfilePlacesScreen(),
     ProfileAddPlaceScreen.routeName: (ctx) => ProfileAddPlaceScreen(),
+    ProfileDataScreen.routeName: (ctx) => ProfileDataScreen(),
 
     // Auth Screens
     LoginScreen.routeName: (ctx) => LoginScreen(),

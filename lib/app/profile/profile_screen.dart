@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:serconexion_app/app/landing/welcome_screen.dart';
+import 'package:serconexion_app/app/profile/profile_data_screen.dart';
 import 'package:serconexion_app/app/profile/profile_places_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -64,7 +65,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                     this._profileItem(
                         icon: Icons.person_outline,
                         text: 'Tus Datos',
-                        routeName: ''),
+                        routeName: ProfileDataScreen.routeName),
                     this._profileItem(
                       icon: Icons.exit_to_app,
                       text: 'Cerrar Sesión',
