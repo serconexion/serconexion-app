@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:serconexion_app/app/profile/profile_add_place_screen.dart';
 
 class ProfilePlacesScreen extends StatefulWidget {
   static const String routeName = '/profile-places-screen';
@@ -18,7 +19,7 @@ class _ProfilePlacesScreenState extends State<ProfilePlacesScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         title: FittedBox(
           child: Text(
             'Tus Lugares',
@@ -34,16 +35,18 @@ class _ProfilePlacesScreenState extends State<ProfilePlacesScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Column(
-              children: this.placesList(context),
-            ),
+            SizedBox(height: 20),
+            ...this.placesList(context),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               width: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(ProfileAddPlaceScreen.routeName);
+                  },
                   padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   color: Theme.of(context).primaryColor,
                   child: Text(
@@ -79,7 +82,7 @@ class _ProfilePlacesScreenState extends State<ProfilePlacesScreen> {
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           alignment: Alignment.centerRight,
-          child: Icon(Icons.delete),
+          child: Icon(Icons.delete, color: Colors.white),
         ),
         child: Container(
           width: double.infinity,
