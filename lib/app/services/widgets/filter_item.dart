@@ -13,10 +13,10 @@ class FilterItem extends StatefulWidget {
 class _FilterItemState extends State<FilterItem> {
   final List<String> titles = ['Edad', 'Sexo', 'Calificacion'];
 
-  final List<TextEditingController> _textControllers = [
+  /* final List<TextEditingController> _textControllers = [
     TextEditingController(),
     TextEditingController()
-  ];
+  ]; */
 
   String sex = 'Masculino';
   bool isExpanded = false;
