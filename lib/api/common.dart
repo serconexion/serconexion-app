@@ -19,7 +19,7 @@ class CommonApi {
   final String baseURL = 'https://api.serconexion.com';
   final String token = '';
 
-  Future<ApiResponse> performGET({String path, bool withToken}) async {
+  Future<ApiResponse> performGET(String path, {bool withToken}) async {
     final http.BaseClient client = http.Client();
     final headers = {HttpHeaders.authorizationHeader: this.token};
     http.Response response;
@@ -34,8 +34,8 @@ class CommonApi {
     }
   }
 
-  Future<ApiResponse> performPOST(
-      {String path, Map data, bool withToken}) async {
+  Future<ApiResponse> performPOST(String path,
+      {Map data, bool withToken}) async {
     final http.BaseClient client = http.Client();
     final headers = {HttpHeaders.authorizationHeader: this.token};
     http.Response response;
@@ -50,8 +50,8 @@ class CommonApi {
     }
   }
 
-  Future<ApiResponse> performPUT(
-      {String path, Map data, bool withToken}) async {
+  Future<ApiResponse> performPUT(String path,
+      {Map data, bool withToken}) async {
     final http.BaseClient client = http.Client();
     final headers = {HttpHeaders.authorizationHeader: this.token};
     http.Response response;
@@ -66,7 +66,7 @@ class CommonApi {
     }
   }
 
-  Future<ApiResponse> performDELETE({String path, bool withToken}) async {
+  Future<ApiResponse> performDELETE(String path, {bool withToken}) async {
     final http.BaseClient client = http.Client();
     final headers = {HttpHeaders.authorizationHeader: this.token};
     http.Response response;
